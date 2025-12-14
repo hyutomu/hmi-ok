@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>動物うらない</title>
+<style>
+body {
+  font-family: "Yu Gothic", sans-serif;
+  background: linear-gradient(135deg, #ffe29f, #ffa99f);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background: #ff7a7a;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff5a5a;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h1>🐾 動物うらない</h1>
+  <p>生年月日を入力してね</p>
+  <input type="date" id="birthday">
+  <br>
+  <button onclick="fortune()">占う</button>
+  <div id="result"></div>
+</div>
+
+<script>
+function fortune() {
+  const input = document.getElementById("birthday").value;
+  if (!input) {
+    document.getElementById("result").textContent = "日付を入力してね！";
+    return;
+  }
+
+  const date = new Date(input);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const md = month * 100 + day;
+
+  let animal = "";
+  let message = "";
+
+  if (md >= 101 && md <= 131) {
+    animal = "ライオン";
+    message = "自信家でリーダータイプ";
+  } else if (md <= 228) {
+    animal = "ゾウ";
+    message = "おおらかで信頼される人";
+  } else if (md <= 331) {
+    animal = "チーター";
+    message = "行動力抜群のチャレンジャー";
+  } else if (md <= 430) {
+    animal = "コアラ";
+    message = "マイペースで癒し系";
+  } else if (md <= 531) {
+    animal = "オオカミ";
+    message = "クールで独自路線";
+  } else if (md <= 630) {
+    animal = "イルカ";
+    message = "社交的でムードメーカー";
+  } else if (md <= 731) {
+    animal = "トラ";
+    message = "情熱的で負けず嫌い";
+  } else if (md <= 831) {
+    animal = "サル";
+    message = "頭の回転が早いアイデアマン";
+  } else if (md <= 930) {
+    animal = "ネコ";
+    message = "自由気ままで感性豊か";
+  } else if (md <= 1031) {
+    animal = "イヌ";
+    message = "誠実で仲間思い";
+  } else if (md <= 1130) {
+    animal = "クマ";
+    message = "優しくて頼れる存在";
+  } else {
+    animal = "フクロウ";
+    message = "知的で観察力が高い";
+  }
+
+  document.getElementById("result").innerHTML =
+    `あなたの動物は<br>🦁 <span style="font-size:22px">${animal}</span><br>${message}`;
+}
+</script>
+</body>
+</html>
